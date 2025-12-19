@@ -10,6 +10,9 @@ on:
 jobs:
   sonarcloud:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: InventoryApp  # <-- هنا نحدد مسار المشروع الفرعي
     steps:
       - uses: actions/checkout@v3
 
@@ -27,4 +30,5 @@ jobs:
           args: >
             -Dsonar.projectKey=mhrmabwly1-ops_InventoryApp
             -Dsonar.organization=mhrmabwly1-ops
+            -Dsonar.sources=lib
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
